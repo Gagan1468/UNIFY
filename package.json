@@ -1,0 +1,64 @@
+{
+  "name": "unify-vscode-companion",
+  "displayName": "UNIFY VS Code Companion",
+  "description": "Send explicitly approved VS Code editor context and diagnostics to the local UNIFY desktop app.",
+  "version": "0.1.0",
+  "publisher": "unify-local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "unify.enableMonitoring",
+        "title": "UNIFY: Enable Workspace Monitoring"
+      },
+      {
+        "command": "unify.disableMonitoring",
+        "title": "UNIFY: Disable Workspace Monitoring"
+      },
+      {
+        "command": "unify.sendCurrentContext",
+        "title": "UNIFY: Send Current File to Desktop Assistant"
+      }
+    ],
+    "configuration": {
+      "title": "UNIFY Companion",
+      "properties": {
+        "unify.monitoring.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Allow this extension to send editor context to the local UNIFY desktop app."
+        },
+        "unify.monitoring.allowedWorkspacePaths": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "Exact workspace folder paths approved for monitoring. Empty means no workspace is approved."
+        },
+        "unify.monitoring.sendOnDocumentChange": {
+          "type": "boolean",
+          "default": true,
+          "description": "Send updated context when the active file changes and has diagnostics."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p ."
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.9.3"
+  }
+}

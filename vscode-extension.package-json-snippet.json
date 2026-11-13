@@ -1,0 +1,15 @@
+{
+  "contributes": {
+    "configuration": {
+      "title": "UNIFY Companion",
+      "properties": {
+        "unify.bridgeToken": {
+          "type": "string",
+          "default": "",
+          "scope": "machine",
+          "description": "Private bearer token copied from UNIFY Settings. Do not share."
+        }
+      }
+    }
+  }
+}
